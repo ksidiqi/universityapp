@@ -1,0 +1,7 @@
+C:\136\SL136\IDAL\obj\Debug\IDAL.csprojResolveAssemblyReference.cache
+C:\136\SL136\IDAL\bin\Debug\IDAL.dll
+C:\136\SL136\IDAL\bin\Debug\IDAL.pdb
+C:\136\SL136\IDAL\bin\Debug\POCO.dll
+C:\136\SL136\IDAL\bin\Debug\POCO.pdb
+C:\136\SL136\IDAL\obj\Debug\IDAL.dll
+C:\136\SL136\IDAL\obj\Debug\IDAL.pdb

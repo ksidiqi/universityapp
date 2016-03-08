@@ -1,0 +1,275 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var id = ViewBag.Id;
+}
+
+<h2>Student Detail</h2>
+
+<a href="/Student/Edit?id=@id">edit</a>
+<div id="divStudentContent">
+    <table class="table table-striped">
+        <tbody data-bind="foreach: viewModel.studentInfos">
+
+            <tr>
+                <td data-bind="visible: !edit()">Id</td>
+                <td data-bind="text: Id, visible: !edit()"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    Id
+                </td>
+                <td data-bind="text: Id">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td data-bind="visible: !edit()">SSN</td>
+                <td data-bind="text: SSN, visible: !edit(), click: change"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    SSN
+                </td>
+                <td class="form-group">
+                    <input type="text" data-bind="value: SSN" />
+                </td>
+            </tr>
+            
+
+
+            <tr>
+                <td data-bind="visible: !edit()">FirstName</td>
+                <td data-bind="text: FirstName, visible: !edit(), click: change"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    FirstName
+                </td>
+                <td class="form-group">
+                    <input type="text" data-bind="value: FirstName" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td data-bind="visible: !edit()">LastName</td>
+                <td data-bind="text: LastName, visible: !edit(), click: change"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    LastName
+                </td>
+                <td class="form-group">
+                    <input type="text" data-bind="value: LastName" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td data-bind="visible: !edit()">Email</td>
+                <td data-bind="text: Email, visible: !edit(), click: change"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    Email
+                </td>
+                <td class="form-group">
+                    <input type="text" data-bind="value: Email" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td data-bind="visible: !edit()">ShoeSize</td>
+                <td data-bind="text: ShoeSize, visible: !edit(), click: change"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    ShoeSize
+                </td>
+                <td class="form-group">
+                    <input type="text" data-bind="value: ShoeSize" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td data-bind="visible: !edit()">Weight</td>
+                <td data-bind="text: Weight, visible: !edit(), click: change"></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td class="form-group">
+                    Weight
+                </td>
+                <td class="form-group">
+                    <input type="text" data-bind="value: Weight" />
+                </td>
+            </tr>
+
+            <tr data-bind="visible: edit()">
+                <td>&nbsp;</td>
+                <td><button type="button" class="btn btn-default" data-bind="click: accept">Update</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var studentViewModelObj = new StudentViewModel();
+        studentViewModelObj.Load2("@id");
+    });
+</script>
+
+
+<br /><br />
+
+<h3>Current Enrollment</h3>
+
+
+<div id="divEnrollment">
+    <div id="divInstructor1">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Schedule Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Course level</th>
+                    <th>Instructor First Name</th>
+                    <th>Instructor Last Name</th>
+                    <th> Day</th>
+                    <th>Time</th>
+                    <th>Quarter</th><th>Year</th>
+
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.currentCourseScheduleList">
+                <tr>
+                    <td data-bind="text: SchedId"></td>
+                    <td data-bind="text: Title"></td>
+                    <td data-bind="text: Description"></td>
+                    <td data-bind="text: Level"></td>
+                    <td data-bind="text: Instructor_fn"></td>
+                    <td data-bind="text: Instructor_ln"></td>
+                    <td data-bind="text: ScheduleDay"></td>
+                    <td data-bind="text: ScheduleTime"></td>
+                    <td data-bind="text: Quarter"></td>
+                    <td data-bind="text: Year"></td>
+                    <td> <button type="button" class="btn btn-danger" data-bind="click: deleteEnrollment">Delete</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="divAddEnrollment" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Enrollment</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Schedule Id</label>
+                        <input type="text" data-bind="value: viewModel.newSchedule.Id" />
+
+                        <input type="hidden" value="@id" data-bind="value: viewModel.newSchedule.StudentId" />
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click: viewModel.AddNewEnrollment">Add Enrollment</button>
+            </div>
+        </div>
+    </div>
+
+        <div id="divFutureCourseSchedule">
+            <h4>Future Enrollment</h4>
+            <table class="table table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Schedule Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Course level</th>
+                        <th>Instructor First Name</th>
+                        <th>Instructor Last Name</th>
+                        <th> Day</th>
+                        <th>Time</th>
+                        <th>Quarter</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: viewModel.futureCourseScheduleList">
+                    <tr>
+                        <td data-bind="text: SchedId"></td>
+                        <td data-bind="text: Title"></td>
+                        <td data-bind="text: Description"></td>
+                        <td data-bind="text: Level"></td>
+                        <td data-bind="text: Instructor_fn"></td>
+                        <td data-bind="text: Instructor_ln"></td>
+                        <td data-bind="text: ScheduleDay"></td>
+                        <td data-bind="text: ScheduleTime"></td>
+                        <td data-bind="text: Quarter"></td>
+                        <td data-bind="text: Year"></td> 
+                        <td> <button type="button" class="btn btn-danger" data-bind="click: deleteEnrollment">Delete</button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="divPreviousCourseSchedule">
+            <h4>Previous Enrollment</h4>
+            <table class="table table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Schedule Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Course level</th>
+                        <th>Instructor First Name</th>
+                        <th>Instructor Last Name</th>
+                        <th> Day</th>
+                        <th>Time</th>
+                        <th>Quarter</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: viewModel.previousCourseScheduleList">
+                    <tr>
+                        <td data-bind="text: SchedId"></td>
+                        <td data-bind="text: Title"></td>
+                        <td data-bind="text: Description"></td>
+                        <td data-bind="text: Level"></td>
+                        <td data-bind="text: Instructor_fn"></td>
+                        <td data-bind="text: Instructor_ln"></td>
+                        <td data-bind="text: ScheduleDay"></td>
+                        <td data-bind="text: ScheduleTime"></td>
+                        <td data-bind="text: Quarter"></td>
+                        <td data-bind="text: Year"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var enrollmentViewModelObj = new EnrollmentViewModel();
+        enrollmentViewModelObj.Load("@id");
+    });
+</script>
+
+<a href='/Student/ViewClassSchedule' title='viewclassschedule'>View class schedule</a> <br />
+<a href='/Student/ViewDegreeAudit?id=@id' title='viewdegreeaudit'>View Degree Audit</a> <br />
+<a href='~/Review/ViewReview?id=@id' title='viewdegreeaudit'>View Review</a> <br />
+<a href="~/Review/ViewClassAverageReview">View Average Class Review</a>
+

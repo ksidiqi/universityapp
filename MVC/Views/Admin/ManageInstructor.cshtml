@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "ManageCourseSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = ViewBag.id;
+}
+
+<h3>Manage Instructor Page</h3>
+<a href="/Admin/Index?id=@ViewBag.id">back</a>
+
+<div id="divManageCourseSchedule" class="container">
+
+    <div id="divAddNewCourseSchedule" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Instructor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">First Name</label>
+                        <input type="text" data-bind="value: viewModel.newInstructor.FirstName" />
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Last Name</label>
+                        <input type="text" data-bind="value: viewModel.newInstructor.LastName" />
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Title</label>
+                        <input type="text" data-bind="value: viewModel.newInstructor.Title" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click: viewModel.AddNewCourseSchedule">Insert New Instructor</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="divInstructor1">
+        <h4>Instructor List</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Title</th>
+
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.instructorList">
+                <tr>
+                    <td><a data-bind="text: Id, attr: {href: 'ViewReviewProf/'+Id}, visible: !edit()"></a></td>
+
+                    <!--<td data-bind="text: Id, visible: !edit(), click: change"></td-->
+                    <td data-bind="text: FirstName, visible: !edit(), click: change"></td>
+                    <td data-bind="text: LastName, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Title, visible: !edit(), click: change"></td>
+                   <td> <button type="button" class="btn btn-danger" data-bind="click: deletePerson, visible: !edit()">Delete</button> </td>
+
+                </tr>
+                <tr data-bind="visible: edit()">
+                    <td data-bind="text: Id"></td>
+
+                    <td class="form-group">
+                        <input type="text" data-bind="value: FirstName" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: LastName" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Title" />
+                    </td>
+
+                    <td>
+                        <button type="button" class="btn btn-default" data-bind="click: accept">Accept</button>
+                        <button type="button" class="btn btn-default" data-bind="click: cancel">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var instructorViewModelObj = new InstructorViewModel();
+        instructorViewModelObj.Load()
+    });
+</script>

@@ -1,0 +1,30 @@
+﻿@{
+    var id = ViewBag.Id;
+    
+}
+<h3>Edit Section</h3>
+<a href="/Admin/ManageInstructor"><< back</a>
+<div id="divInstructorEdit">
+    Edit Instructor with Id @id<br />
+    First Name  : <input type="text" data-bind="value: $data.first" /><br />
+    <br />
+    Last Name : <input type="text" data-bind="value: $data.last" /><br />
+    <br />
+    Title : <input type="text" data-bind="value: $data.title" /><br />
+    <br />
+    
+    <input type="button" data-bind="value: 'Update', click:$data.update" style="margin-left:80px" />
+    
+    <br /><br />
+    <div id="divMessage"></div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var InstrutorViewModelObj = new InstructorViewModel();
+        InstrutorViewModelObj.Load(@id);
+    });
+</script>
+
+

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "ViewStudentDegreeAudit";
+    var id = ViewBag.id;
+}
+
+<h2>ViewDegreeAudit</h2>
+<div id="divDegreeAuditList">
+    <div id="divDegreeAudit">
+        <h4>Degree Audit</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Title</th>
+                    <th>Course Description</th>
+                    <th>Course Grade</th>
+
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.degreeAuditList">
+                <tr>
+                    <td data-bind="text: CourseId, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Title, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Description, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Grade, visible: !edit(), click: change"></td>
+                    
+                </tr>
+                <tr data-bind="visible: edit()">
+                    <td data-bind="text: CourseId"></td>
+
+                    <td data-bind="text: Title"></td>
+
+                    <td data-bind="text: Description"></td>
+
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Grade" />
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var degreeAuditViewModelObj = new DegreeAuditViewModel();
+        degreeAuditViewModelObj.Load("@id");
+    });
+</script>

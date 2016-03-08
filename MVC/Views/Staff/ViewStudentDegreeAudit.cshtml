@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "ViewStudentDegreeAudit";
+    var id = ViewBag.id;
+}
+
+<h2>ViewDegreeAudit</h2>
+<div id="divDegreeAuditList">
+    <div id="divAddNewDegreeAudit" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Degree Audit</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Course Title</label>
+                        <select class="form-control" data-bind="options: viewModel.courseList,
+                           optionsText: function(course)
+                           {
+                           return course.title + ' ' + course.description;
+                           },
+                           optionsValue: 'course_id',
+                           value: viewModel.newAudit.Title,
+                           optionsCaption: 'Choose a Course...'"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Grade</label>
+                        <input type="text" data-bind="value: viewModel.newAudit.Grade" />
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click: viewModel.AddNewAudit">Insert New Instructor</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="divDegreeAudit">
+        <h4>Degree Audit</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Title</th>
+                    <th>Course Description</th>
+                    <th>Course Grade</th>
+
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.degreeAuditList">
+                <tr>
+                    <td data-bind="text: CourseId, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Title, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Description, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Grade, visible: !edit(), click: change"></td>
+                    <td> <button type="button" class="btn btn-danger" data-bind="click: deleteHistory, visible: !edit()">Delete</button> </td>
+
+                </tr>
+                <tr data-bind="visible: edit()">
+                    <td data-bind="text: CourseId"></td>
+
+                    <td data-bind="text: Title"></td>
+
+                    <td data-bind="text: Description"></td>
+
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Grade" />
+                    </td>
+
+                    
+                    <td>
+                        <button type="button" class="btn btn-default" data-bind="click: accept">Accept</button>
+                        <button type="button" class="btn btn-default" data-bind="click: cancel">Cancel</button>
+                    </td>
+                        
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var degreeAuditViewModelObj = new DegreeAuditViewModel();
+        degreeAuditViewModelObj.Load("@id");
+    });
+</script>

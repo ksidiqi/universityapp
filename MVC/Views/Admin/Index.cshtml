@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    var id = ViewBag.id;
+}
+<h2>Welcome admin</h2>
+
+<p>What feature should admin able to do?</p>
+<ul>
+   
+    <li><a href="~/Admin/StudentList?id=@ViewBag.id">Show All Students</a></li>
+    <li><a href="~/Admin/ManageInstructor?id=@ViewBag.id">Manage Instructors</a></li>
+    <li><a href="~/Admin/CourseList?id=@ViewBag.id">manage new course plan</a></li>
+    <li><a href="~/Schedule/Index">manage new course schedule</a></li>
+</ul>

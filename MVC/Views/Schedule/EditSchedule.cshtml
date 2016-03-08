@@ -1,0 +1,86 @@
+﻿@{
+    var id = ViewBag.Id;
+    var year = ViewBag.year;
+    var quarter = ViewBag.quarter;
+}
+<h3>Edit Section</h3>
+<a href="/Schedule/Index"><< back</a>
+<div id="divScheduleEdit">
+    Edit Schedule Id @id<br />
+    Course Id : <input type="text" data-bind="value: $data.courseid" /><br />
+    <br />
+    Year : <input type="text" data-bind="value: $data.year" /><br />
+    <br />
+    Quarter : <input type="text" data-bind="value: $data.quarter" /><br />
+    <br />
+    Session : <input type="text" data-bind="value: $data.session" /><br />
+    <br />
+    Schedule Day Id : <input type="text" data-bind="value: $data.scheduledayid" /><br />
+    <br />
+    Schedule Time Id : <input type="text" data-bind="value: $data.scheduletimeid" /><br />
+    <br />
+    Instructor Id : <input type="text" data-bind="value: $data.instructorid" /><br />
+    <br />
+    <input type="button" data-bind="value: 'Update', click:$data.update" style="margin-left:80px" />
+    <br /><br />
+    <div id="divMessage"></div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            var scheduleViewModelObj = new ScheduleViewModel();
+            scheduleViewModelObj.Load(@id);
+        });
+</script>
+
+
+<div id="divScheduleListContent">
+    <table class="table">
+        <tr>
+            <td>Year</td>
+            <td><input id="year" /></td>
+        </tr>
+        <tr>
+            <td>Quarter</td>
+            <td><input id="quarter" /></td>
+        </tr>
+       
+    </table>
+
+    <br /><br />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Course Title</th>
+                <th>Course Description</th>
+                <th>Year</th>
+                <th>Quarter</th>
+                <th>Session</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr class="datatable">
+                <td data-bind="text: scheduleid"></td>
+                <td data-bind="text: coursetitle"></td>
+                <td data-bind="text: coursedescription"></td>
+                <td data-bind="text: year"></td>
+                <td data-bind="text: quarter"></td>
+                <td data-bind="text: session"></td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var scheduleListViewModelObj = new ScheduleViewModel();
+        scheduleListViewModelObj.GetAll("@year", "@quarter");
+    });
+
+   
+</script>

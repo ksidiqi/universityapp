@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Welcome";
+}
+<h2>Demo</h2>
+
+<!--Demo 1 2-->
+<div id="divDemoContent">
+        <p>Name: <input data-bind="value: name" /></p>
+        <p>Age: <input data-bind="value: age" /></p>
+        <p>Job: <input data-bind="value: job" /></p>
+        <h2>
+            Hello, <span data-bind="text: name"> </span>.
+            You are <span data-bind="text: age"></span> years old.
+            Your job is <span data-bind="text:job"></span>
+        </h2>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var demoViewModel = new DemoViewModel2();
+            demoViewModel.Initialize();
+        });
+    </script>
+
+<!--Demo 3-->
+@*<div id="divDemoContent">
+        <button data-bind="click:updateClick">Click</button>
+        <h2>
+            You have clicked <span data-bind="text: click"></span>
+        </h2>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var demoViewModel = new DemoViewModel3();
+            demoViewModel.Initialize();
+        });
+    </script>*
+
+<!--Demo 4-->
+@*<div id="divDemoContent">
+        <form data-bind="submit:addItem">
+            Add item: <input type="text" data-bind='value:itemToAdd, valueUpdate: "afterkeydown"' />
+            <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+        </form>
+
+        <p>Your values:</p>
+        <select multiple="multiple" height="5" data-bind="options:allItems, selectedOptions:selectedItems"> </select>
+
+        <div>
+            <button data-bind="click: removeSelected, enable: selectedItems().length > 0">Remove</button>
+            <button data-bind="click: sortItems, enable: allItems().length > 1">Sort</button>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var demoViewModel = new DemoViewModel4();
+            demoViewModel.Initialize();
+        });
+    </script>
+
+<!--Demo 5-->
+@*
+<div id="divDemoContent">
+    <form data-bind="submit: addNewPerson">
+        Name: <input type="text" data-bind="value: newPerson.name" />
+        Age: <input type="text" data-bind="value: newPerson.age" />
+        <button class="btn btn-default" type="submit">Submit</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: people">
+            <tr data-bind="click: function(data) {
+                    alert(data.name + ' ' + data.age);}">
+                <td data-bind="text: name"></td>
+                <td data-bind="text: age"></td>
+                <td><button class="btn-danger btn" data-bind="click: $parent.deletePerson">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var demoViewModel = new DemoViewModel5();
+        demoViewModel.Initialize();
+    });
+</script>*@

@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Welcome";
+    var id = ViewBag.id;
+}
+<style>
+    .courseList td
+    {
+        border: solid 1px black;
+    }
+     .courseList th
+    {
+        border: solid 1px black;
+    }
+</style>
+<a href="/Admin/Index?id=@ViewBag.id">back</a>
+
+<h1>Manage Course Plan</h1>
+<div id="divCourseListContent">
+
+    <div id="divAddNewCourse" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Course</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Course Title</label>
+                        <input type="text" data-bind="value: viewModel.newCourse.Title" />
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Course Level</label>
+                        <select class="form-control" data-bind="options: viewModel.levelList,
+                            value: viewModel.newCourse.Level,
+                            optionsCaption: 'Choose a Level...'"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Course Description</label>
+                        <input type="text" data-bind="value: viewModel.newCourse.Description" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click: viewModel.AddNewCourse">Insert New Course</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="divCoursess">
+        <h4>Courses List</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Course Description</th>
+                    <th>Course Level</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.courseList">
+                <tr>
+                    <td data-bind="text: Title, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Description, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Level, visible: !edit(), click: change"></td>
+                    <td> <button type="button" class="btn btn-danger" data-bind="click: deleteCourse, visible: !edit()">Delete</button> </td>
+
+                </tr>
+                <tr data-bind="visible: edit()">
+                   
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Title" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Description" />
+                    </td>
+                    <td class="form-group">
+                        <select class="form-control" data-bind="options: $parent.viewModel.levelList,
+                        value: Level,
+                        optionsCaption: 'Choose a Lvel...'"></select>
+                    </td>
+
+                    <td>
+                        <button type="button" class="btn btn-default" data-bind="click: accept">Accept</button>
+                        <button type="button" class="btn btn-default" data-bind="click: cancel">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var courseListViewModelObj = new CourseListViewModel();
+        courseListViewModelObj.Load();
+    });
+</script>

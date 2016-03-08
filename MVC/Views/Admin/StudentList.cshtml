@@ -1,0 +1,43 @@
+﻿@{
+    var id = ViewBag.id;
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Student List Page</h3>
+<a href="/Admin/Index?id=@ViewBag.id">back</a>
+
+<div id="divStudentList" class="container">
+    <div id="divStudents">
+        <h4>Student List</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.studentList">
+                <tr>
+                    <td data-bind="text: Id"></td>
+                    <td data-bind="text: FirstName, visible: !edit()"></td>
+                    <td data-bind="text: LastName, visible: !edit()"></td>
+                    <td data-bind="text: Email, visible: !edit()"></td>
+                    
+
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var studentViewModelObj = new StudentViewModel();
+            studentViewModelObj.Load();
+        });
+    </script>

@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "ViewReview";
+    var id = ViewBag.id;
+}
+
+<h2>View Review</h2>
+
+<div id="divManageCourseSchedule" class="container">
+    <div id="divNewReview" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add new Review</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="schedule_id" class="col-md-2 control-label">Student ID</label>
+                        <input data-bind="value: student_id" type="text" class="form-control" placeholder="Text input" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="schedule_id" class="col-md-2 control-label">Section ID</label>
+                        <input data-bind="value: schedule_id" type="text" class="form-control" placeholder="Text input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rec_instructor" class="col-md-2 control-label">Instructor</label>
+                        <input data-bind="value: rec_instructor" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="form-group">
+                        <label for="rec_course" class="col-md-2 control-label">Course</label>
+                        <input data-bind="value: rec_course" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="form-group">
+                        <label for="exams_rep" class="col-md-2 control-label">Exams</label>
+                        <input data-bind="value: exams_rep_material" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="form-group">
+                        <label for="instructor_clear" class="col-md-2 control-label">Instructor clear</label>
+                        <input data-bind="value: instructor_clear" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="form-group">
+                        <label for="exam_rep" class="col-md-2 control-label">Grades Expected</label>
+                        <input data-bind="value: expected_grade" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="form-group">
+                        <label for="course_defficulty" class="col-md-2 control-label">course difficulty</label>
+                        <input data-bind="value: course_difficult" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="form-group">
+                        <label for="hours_spent" class="col-md-2 control-label">Hours studied</label>
+                        <input data-bind="value: hours_study" type="text" class="form-control" placeholder="Text input">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click: add">Insert New Review</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="divYourReviewSt">
+    <h4>Your Reviews</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Student</td>
+                <td>Section</td>
+                <td>Instructor Rating</td>
+                <td>Course Rating </td>
+                <td>Exams Rating </td>
+                <td>Clear and Audible </td>
+                <td>Grades Expected </td>
+                <td>Course Difficulty </td>
+                <td>Hours Studied </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr data-bind="visible: !edit(), click: change">
+                <!-- data-bind="visible: !edit(), click: change"  -->
+                <td data-bind="text: student_id"></td>
+                <td data-bind="text: schedule_id"></td>
+                <td data-bind="text: rec_instructor"></td>
+                <td data-bind="text: rec_course"></td>
+                <td data-bind="text: exams_rep_material"></td>
+                <td data-bind="text: instructor_clear"></td>
+                <td data-bind="text: expected_grade"></td>
+                <td data-bind="text: course_difficult"></td>
+                <td data-bind="text: hours_study"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr data-bind="visible: edit()">
+                <td data-bind="text: student_id"></td>
+                <td data-bind="text: schedule_id"></td>
+
+                <td class="form-group">
+                    <input class="col-md-12" typeof=" text" data-bind="value: rec_instructor" />
+                </td>
+                <td class="form-group">
+                    <input class="col-md-12" typeof="text" data-bind="value: rec_course" />
+                </td>
+                <td class="form-group">
+                    <input class="col-md-12" typeof="text" data-bind="value: exams_rep_material" />
+                </td>
+                <td class="form-group">
+                    <input class="col-md-12" typeof="text" data-bind="value: instructor_clear" />
+                </td>
+                <td class="form-group">
+                    <input class="col-md-12" typeof="text" data-bind="value: expected_grade" />
+                </td>
+                <td class="form-group">
+                    <input class="col-md-12" typeof="text" data-bind="value: course_difficult" />
+                </td>
+                <td class="form-group">
+                    <input class="col-md-12" typeof="text" data-bind="value: hours_study" />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default" data-bind="click: cancel">Cancel</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default" data-bind="click: submitChange">Submit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+ 
+
+<script type="text/javascript">
+//TODO: change A000002 to student's id 
+    $(document).ready(function () {
+        var rm = new ReviewViewModel();
+        rm.NewReview("@id"); 
+        rm.GetAllStudentReview("@id");
+        
+    });
+</script>
+

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "HireInstructor";
+}
+
+<h3>Hire Instructor</h3>
+<a href="/Admin/ManageInstructor"><< back</a>
+<div id="divInstructor">
+    <table class="table table-striped">
+        <tr>
+            <td>First Name</td>
+            <td><input data-bind="value: first" /></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input data-bind="value: last" /></td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td><input data-bind="value: title" /></td>
+        </tr>     
+        <tr>
+            <td></td>
+            <td><button data-bind="click: add">Hire</button></td>
+        </tr>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var InstrutorViewModelObj = new InstructorViewModel();
+        InstrutorViewModelObj.Initialize();
+    });
+</script>
+
+
+<br />
+<div id="divInstructorListContent">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td data-bind="text: id"></td>
+                <td data-bind="text: first"></td>
+                <td data-bind="text: last"></td>
+                <td data-bind="text: title"></td>
+                <td>
+                    <a data-bind="attr: { href : '/Admin/UpdateInstructor?id='+id, title: 'update' }">update</a>
+                    <a data-bind="DeleteInstructor: id">fire</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a data-bind="attr: { href : '/Admin/HireInstructor', title: 'hire'}">hire instructor</a>
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var InstrutorViewModelObj = new InstructorViewModel();
+        InstrutorViewModelObj.getAll();
+    });
+</script>
+

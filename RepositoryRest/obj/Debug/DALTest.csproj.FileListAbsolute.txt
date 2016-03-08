@@ -1,0 +1,12 @@
+C:\136\SL136\DALTest\obj\Debug\DALTest.csprojResolveAssemblyReference.cache
+C:\136\SL136\DALTest\bin\Debug\DALTest.dll.config
+C:\136\SL136\DALTest\bin\Debug\DALTest.dll
+C:\136\SL136\DALTest\bin\Debug\DALTest.pdb
+C:\136\SL136\DALTest\bin\Debug\POCO.dll
+C:\136\SL136\DALTest\bin\Debug\POCO.pdb
+C:\136\SL136\DALTest\obj\Debug\DALTest.dll
+C:\136\SL136\DALTest\obj\Debug\DALTest.pdb
+C:\136\SL136\DALTest\bin\Debug\136Repository.dll
+C:\136\SL136\DALTest\bin\Debug\136Repository.pdb
+C:\136\SL136\DALTest\bin\Debug\136IRepository.dll
+C:\136\SL136\DALTest\bin\Debug\136IRepository.pdb

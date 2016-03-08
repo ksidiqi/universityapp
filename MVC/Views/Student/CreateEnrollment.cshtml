@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Enroll in Class";
+    var id = ViewBag.Id;
+    var scheduleid = ViewBag.scheduleid;
+}
+
+<h3>Enroll in Class</h3>
+<a href="/Student/Index?id=@id"><< back</a>
+<div id="divInstructor">
+    <table class="table table-striped">
+        <tr>
+            <td>Schedule Id</td>
+            <td><input data-bind="value: scheduleid" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button data-bind="click: add">Add</button></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {     
+            var studentViewModelObj = new StudentViewModel();
+            studentViewModelObj.Initialize2("@id");
+    });
+</script>

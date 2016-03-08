@@ -1,0 +1,12 @@
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\obj\Debug\RepositoryTest.csprojResolveAssemblyReference.cache
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136RepositoryTest.dll.config
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136RepositoryTest.dll
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136RepositoryTest.pdb
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136IRepository.dll
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136Repository.dll
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\POCO.dll
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136IRepository.pdb
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\POCO.pdb
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\bin\Debug\136Repository.pdb
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\obj\Debug\136RepositoryTest.dll
+C:\Users\isaacc\Documents\Visual Studio 2013\Projects\Solution136\RepositoryRest\obj\Debug\136RepositoryTest.pdb

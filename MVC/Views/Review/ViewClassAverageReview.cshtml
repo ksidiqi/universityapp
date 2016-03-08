@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "ViewClassAverageReview";
+}
+
+<h2>View Class Average Review</h2>
+<div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" id="divYourCourseReviewForm">
+            <div class="form-group">
+                <label for="course">Course </label>
+                <input type="text" class="form-control" data-bind="value: cid">
+            </div>
+            <button type="button" class="btn btn-info" data-bind="click: update">Submit</button>
+
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <h4>Average Review</h4>
+    <table class="table table-hover" id="divYourCourseReview">
+        <thead>
+            <tr>
+                <td>section</td>
+                <td>Recommend the instructor</td>
+                <td>Recommend the course</td>
+                <td>Exams represent the course material</td>
+                <td>Instructor is clear and audible</td>
+                <td>Grades Students Expected</td>
+                <td>Course difficulty realtive to others</td>
+                <td>Hours spent studying outside of class</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-bind="foreach: viewModel">
+                <td data-bind="text: cid1"></td>
+                <td data-bind="text: av_rec_instructor"></td>
+                <td data-bind="text: av_rec_course"></td>
+                <td data-bind="text: av_exams_rep_material"></td>
+                <td data-bind="text: av_instructor_clear"></td>
+                <td data-bind="text: av_expected_grade"></td>
+                <td data-bind="text: av_course_difficult"></td>
+                <td data-bind="text: av_hours_study"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<h4>Student Reviews</h4>
+<table class="table table-condensed table-hover table-striped header-fixed" id="divYourCourseReview2">
+    <thead>
+        <tr>
+            <td>InstructorRating</td>
+            <td>CourseRating</td>
+            <td>ExamsRating</td>
+            <td>Clear and Audible</td>
+            <td>GradesExpected</td>
+            <td>CourseDifficulty</td>
+            <td>HoursStudied</td>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: viewModel">
+        <tr>
+            <!-- data-bind="visible: !edit(), click: change"  -->
+            <td data-bind="text: rec_instructor"></td>
+            <td data-bind="text: rec_course"></td>
+            <td data-bind="text: exams_rep_material"></td>
+            <td data-bind="text: instructor_clear"></td>
+            <td data-bind="text: expected_grade"></td>
+            <td data-bind="text: course_difficult"></td>
+            <td data-bind="text: hours_study"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var rm = new ReviewViewModel();
+        rm.GetCourseInfo("");
+
+    });
+</script>

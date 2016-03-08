@@ -1,0 +1,9 @@
+C:\136\SL136\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\136\SL136\DAL\bin\Debug\POCO.dll
+C:\136\SL136\DAL\bin\Debug\POCO.pdb
+C:\136\SL136\DAL\bin\Debug\IDAL.dll
+C:\136\SL136\DAL\bin\Debug\IDAL.pdb
+C:\136\SL136\DAL\bin\Debug\136Repository.dll
+C:\136\SL136\DAL\bin\Debug\136Repository.pdb
+C:\136\SL136\DAL\obj\Debug\136Repository.dll
+C:\136\SL136\DAL\obj\Debug\136Repository.pdb

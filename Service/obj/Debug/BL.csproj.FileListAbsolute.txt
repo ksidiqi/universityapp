@@ -1,0 +1,16 @@
+C:\136\SL136\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\136\SL136\BL\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\136\SL136\BL\bin\Debug\Microsoft.Practices.Unity.dll
+C:\136\SL136\BL\bin\Debug\Ninject.dll
+C:\136\SL136\BL\bin\Debug\POCO.dll
+C:\136\SL136\BL\bin\Debug\POCO.pdb
+C:\136\SL136\BL\bin\Debug\Microsoft.Practices.Unity.xml
+C:\136\SL136\BL\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\136\SL136\BL\bin\Debug\Ninject.pdb
+C:\136\SL136\BL\bin\Debug\Ninject.xml
+C:\136\SL136\BL\bin\Debug\Business.dll
+C:\136\SL136\BL\bin\Debug\Business.pdb
+C:\136\SL136\BL\obj\Debug\Business.dll
+C:\136\SL136\BL\obj\Debug\Business.pdb
+C:\136\SL136\BL\bin\Debug\136IRepository.dll
+C:\136\SL136\BL\bin\Debug\136IRepository.pdb

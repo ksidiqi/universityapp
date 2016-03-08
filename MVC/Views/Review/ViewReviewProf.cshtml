@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "ViewReview";
+    var id = ViewBag.id;
+}
+
+<h2>Professor Reviews</h2>
+
+
+<div>
+    <h3>Average Reviews for Classes you thought</h3>
+    <div>
+        <table id="divYourCourseReview" class="table table-condensed table-hover table-striped header-fixed">
+            <thead >
+                <tr>
+                    <td><b>Instructor<br>Rating</b></td>
+                    <td><b>Course<br>Rating</b></td>
+                    <td><b>Exams<br>Rating</b></td>
+                    <td><b>Instructor<br />is Clear<br>and Audible</b></td>
+                    <td><b>Grades<br>Expected</b></td>
+                    <td><b>Course<br>Difficulty</b></td>
+                    <td><b>Hours<br>Studied</b></td>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel">
+                <tr>
+                    <td data-bind="text: average.av_rec_instructor"></td>
+                    <td data-bind="text: average.av_rec_course"></td>
+                    <td data-bind="text: average.av_exams_rep_material"></td>
+                    <td data-bind="text: average.av_instructor_clear"></td>
+                    <td data-bind="text: average.av_expected_grade"></td>
+                    <td data-bind="text: average.av_course_difficult"></td>
+                    <td data-bind="text: average.av_hours_study"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br/>
+
+        <h3>All the Reviews for Classes you thought</h3>
+        <table class="table table-condensed table-hover table-striped header-fixed" id="divYourCourseReview2" >
+            <thead>
+                <tr>
+                    <td><b>Section ID</b></td>
+                    <td><b>Instructor<br>Rating</b></td>
+                    <td><b>Course<br>Rating</b></td>
+                    <td><b>Exams<br>Rating</b></td>
+                    <td><b>Instructor<br />is Clear<br>and Audible</b></td>
+                    <td><b>Grades<br>Expected</b></td>
+                    <td><b>Course<br>Difficulty</b></td>
+                    <td><b>Hours<br>Studied</b></td>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel">
+                <tr>
+                    <!-- data-bind="visible: !edit(), click: change"  -->
+                    <td data-bind="text: schedule_id"></td>
+                    <td data-bind="text: rec_instructor"></td>
+                    <td data-bind="text: rec_course"></td>
+                    <td data-bind="text: exams_rep_material"></td>
+                    <td data-bind="text: instructor_clear"></td>
+                    <td data-bind="text: expected_grade"></td>
+                    <td data-bind="text: course_difficult"></td>
+                    <td data-bind="text: hours_study"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+//TODO: change 1 to professor's ID
+    $(document).ready(function () {
+        var rm = new ReviewViewModel();
+        rm.GetProfReviwList("@id");
+        rm.AverageProfRating("@id");
+    });
+</script>
+

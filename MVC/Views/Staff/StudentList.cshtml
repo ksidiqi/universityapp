@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "GetStudents";
+    var id = ViewBag.id;
+}
+
+<h3>Student List Page</h3>
+
+<div id="divStudentList" class="container">
+
+    <div id="divAddNewStudent" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Student</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Student Id</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.Id" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">First Name</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.FirstName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Last Name</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.LastName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">SSN</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.SSN" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Email</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.Email" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Password</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.Password" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Shoe Size</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.ShoeSize" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Weight</label>
+                        <input type="text" data-bind="value: viewModel.newStudent.Weight" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click: viewModel.AddNewStudent">Insert New Student</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    <div id="divStudents">
+        <h4>Student List</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>SSN</th>
+                    <th>Password</th>
+                    <th>ShoeSize</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.studentList">
+                <tr>
+                    <td><a data-bind="text: Id, attr: {href: 'StudentEnrollmentDetail/'+Id}, visible: !edit()"></a></td>
+                    <td data-bind="text: FirstName, visible: !edit(), click: change"></td>
+                    <td data-bind="text: LastName, visible: !edit(), click: change"></td>                
+                    <td data-bind="text: Email, visible: !edit(), click: change"></td>
+                    <td data-bind="text: SSN, visible: !edit(), click: change"></td>
+                    <td data-bind="password: Password, visible: !edit(), click: change"></td>
+                    <td data-bind="text: ShoeSize, visible: !edit(), click: change"></td>
+                    <td data-bind="text: Weight, visible: !edit(), click: change"></td>
+                    <td> <button type="button" class="btn btn-danger" data-bind="click: deletePerson, visible: !edit()">Delete</button> </td>
+
+                </tr>
+                <tr data-bind="visible: edit()">
+                    <td><a data-bind="text: Id, attr: {href: 'StudentEnrollmentDetail/'+Id}"></a></td>
+
+                    <td class="form-group">
+                        <input type="text" data-bind="value: FirstName" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: LastName" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Email" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: SSN" />
+                    </td>
+                    <td class="form-group">
+                        <input type="password" data-bind="value: Password" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: ShoeSize" />
+                    </td>
+                    <td class="form-group">
+                        <input type="text" data-bind="value: Weight" />
+                    </td>
+
+
+               
+                    <td>
+                        <button type="button" class="btn btn-default" data-bind="click: accept">Accept</button>
+                        <button type="button" class="btn btn-default" data-bind="click: cancel">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var studentViewModelObj = new StudentViewModel();
+        studentViewModelObj.Load()
+    });
+</script>

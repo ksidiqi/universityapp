@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Create New Schedule";
+}
+
+<h3>Add New Section</h3>
+<a href="/Schedule/Index"><< back</a>
+<div id="divSchedule">
+    <table class="table table-striped">
+        <tr>
+            <td>Schedule Id</td>
+            <td><input data-bind="value: scheduleid" /></td>
+        </tr>
+        <tr>
+            <td>Course Id</td>
+            <td><input data-bind="value: courseid" /></td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td><input data-bind="value: year" /></td>
+        </tr>
+        <tr>
+            <td>Quarter</td>
+            <td><input data-bind="value: quarter" /></td>
+        </tr>
+        <tr>
+            <td>Session</td>
+            <td><input data-bind="value: session" /></td>
+        </tr>
+        <tr>
+            <td>Schedule Day Id</td>
+            <td><input data-bind="value: scheduledayid" /></td>
+        </tr>
+        <tr>
+            <td>Schedule Time Id</td>
+            <td><input data-bind="value: scheduletimeid" /></td>
+        </tr>
+        <tr>
+            <td>Instructor Id</td>
+            <td><input data-bind="value: instructorid" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button data-bind="click: add">Add</button></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            var scheduleViewModelObj = new ScheduleViewModel();
+            scheduleViewModelObj.Initialize();
+        });
+</script>

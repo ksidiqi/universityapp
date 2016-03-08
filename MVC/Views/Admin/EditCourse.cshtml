@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "EditCourse";
+    var id = ViewBag.id;
+}
+
+<h2>EditCourse</h2>
+
+<a href="/Admin/CourseList">back</a>
+<div id="divCourseEdit">
+    Edit Course Id @id<br />
+    Course Title : <input type="text" data-bind="value: $data.title" /><br />
+    <br />
+    Course Level : <input type="text" data-bind="value: $data.level" /><br />
+    <br />
+    Course Description : <input type="text" data-bind="value: $data.description" /><br />
+  
+    <input type="button" data-bind="value: 'Update', click:$data.update" style="margin-left:80px" />
+    <br /><br />
+    <div id="divMessage"></div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var courseViewModelObj = new CourseListViewModel();
+        courseViewModelObj.LoadSingle(@id);
+    });
+</script>

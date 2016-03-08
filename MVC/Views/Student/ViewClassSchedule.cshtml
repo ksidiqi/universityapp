@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "ManageCourseSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Manage Course Schedule Page</h3>
+
+<div id="divManageCourseSchedule" class="container">
+    <div id="divCurrentCourseSchedule">
+        <h4>Current Quarter Course Schedule</h4>
+        <table class="table table-condensed table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Schedule #</th>
+                    <th>Year</th>
+                    <th>Quarter</th>
+                    <th>Session</th>
+                    <th>Course Title</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.currentCourseScheduleList">
+                <tr>
+                    <td data-bind="text: schedule_id"></td>
+                    <td data-bind="text: year"></td>
+                    <td data-bind="text: quarter"></td>
+                    <td data-bind="text: session"></td>
+                    <td data-bind="text: course_title + ' ' + course_description"></td>
+                    <td data-bind="text: day"></td>
+                    <td data-bind="text: time"></td>
+                    <td data-bind="text: instructor_name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="divfuturevourseSchedule">
+        <h4>Future Course Schedule</h4>
+        <table class="table table-condensed table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Schedule #</th>
+                    <th>Year</th>
+                    <th>Quarter</th>
+                    <th>Session</th>
+                    <th>Course Title</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Instructor</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.futureCourseScheduleList">
+                <tr data-bind="visible: !edit(), click: change">
+                    <td data-bind="text: schedule_id"></td>
+                    <td data-bind="text: year"></td>
+                    <td data-bind="text: quarter"></td>
+                    <td data-bind="text: session"></td>
+                    <td data-bind="text: course_title + ' ' + course_description"></td>
+                    <td data-bind="text: day"></td>
+                    <td data-bind="text: time"></td>
+                    <td data-bind="text: instructor_name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="divPreviousCourseSchedule">
+        <h4>Previous Course Schedule</h4>
+        <table class="table table-condensed table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Schedule #</th>
+                    <th>Year</th>
+                    <th>Quarter</th>
+                    <th>Session</th>
+                    <th>Course Title</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: viewModel.previousCourseScheduleList">
+                <tr>
+                    <td data-bind="text: schedule_id"></td>
+                    <td data-bind="text: year"></td>
+                    <td data-bind="text: quarter"></td>
+                    <td data-bind="text: session"></td>
+                    <td data-bind="text: course_title + ' ' + course_description"></td>
+                    <td data-bind="text: day"></td>
+                    <td data-bind="text: time"></td>
+                    <td data-bind="text: instructor_name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var manageCourseSchdeleViewModel = new ManageCourseScheduleViewModel();
+        manageCourseSchdeleViewModel.Load();
+    });
+</script>
